@@ -1,0 +1,44 @@
+/// exo 1 taxi
+
+class John {
+    constructor(name,santeMentale){
+        this.name = name;
+        this.santeMentale = santeMentale;
+    }
+}
+
+class Trajet{
+    constructor(){
+        this.radio = ["It's Ok", "JOLT", "Anissa", "Car Radio", "Côte Ouest"]; // les musiques ne sont pas citées lors de l'exécution du code
+        this.feuxRouges = 30;
+        this.changements = 0;
+    }
+    jouerChanson(){
+        return this.radio [Math.floor(Math.random() * this.radio.length)];
+    }
+}
+
+let john = new John("John",10);
+let trajet = new Trajet();
+
+
+while(trajet.feuxRouges > 0) {
+    let musique = trajet.jouerChanson();
+    console.log ("Musique jouée : ", trajet.radio && "Feux restants : ", trajet.feuxRouges);
+
+    if (musique === "Anissa"){
+        john.santeMentale -= 1;
+        trajet.changements +=1;
+        console.log ("Santé mentale de", john.name, ":", john.santeMentale);
+        if (john.santeMentale === 0){
+            console.log ("Explosion");
+            break;
+        }
+    }
+
+    trajet.feuxRouges -= 1;
+}
+
+if (trajet.feuRouges === 0){
+    console.log (john.name, "est bien arrvié à destination en ", trajet.changements, "changements de taxi."); // je n'arrive pas à faire dire cette phrase 
+}
